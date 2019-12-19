@@ -85,7 +85,7 @@ toString() {
 
 class Car {
   constructor(model, milesPerGallon) {
-    this.model = model;
+  this.model = model;
   this.milesPerGallon = milesPerGallon;
   this.tank = 0;
   this.odometer = 0; 
@@ -97,16 +97,30 @@ class Car {
   }
 
   drive(distance) {
-    if(this.tank === 0) {
-      return `I ran out of fuel at ${this.odometer} miles!`;
-  }
-
-  this.odometer += distance; 
   
-   this.tank -= distance / this.milesPerGallon 
+        // Drivable miles is how far we can go with the fuel in the tank
+        const drivableMiles = this.tank * this.milesPerGallon
+        // If we have enough fuel for the specified distance
+        // We increase the odometer by the distance travelled
+        // And reduce the tank by the fuel required for the distance.
+        if (drivableMiles >= distance) {
+          this.odometer += distance;
+          this.tank -= distance / this.milesPerGallon 
+        }
+        // else, If we do not have enough fuel for the distance
+        // We increase the odometer by the drivableMiles instead
+        // And reduce the tank by the fuel required by the drivable distance
+        else {
+          this.odometer += drivableMiles;
+          this.tank -= drivableMiles / this.milesPerGallon
+        }
+    
+        if (this.tank === 0) {
+          return `I ran out of fuel at ${this.odometer} miles!`;
+        }
+      }
 
 
-}
 }
 
 /*
