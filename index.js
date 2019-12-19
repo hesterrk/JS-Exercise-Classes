@@ -150,10 +150,10 @@ class Lambdasian {
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
 class Instructor extends Lambdasian {
-  constructor({name, age, location, speciality, favLanguage, catchPhrase}) {
+  constructor({name, age, location, specialty, favLanguage, catchPhrase}) {
     super({name, age, location});
 
-    this.speciality = speciality;
+    this.specialty = specialty;
     this.favLanguage = favLanguage;
     this.catchPhrase = catchPhrase;
   }
@@ -162,8 +162,8 @@ demo (subject) {
 return `Today we are learning about ${subject}`;
 }
 
-grade ({student}, subject) {
-  return `${student.name} receives a perfect score on ${subject}`;
+grade (student_obj, subject) {
+  return `${student_obj.name} receives a perfect score on ${subject}`;
 }
 
 }
@@ -218,7 +218,26 @@ sprintChallenge(subject) {
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
+class ProjectManager extends Instructor {
+  constructor({name, age, location, specialty, favLanguage, catchPhrase, gradClassName, favInstructor}){
+    super({name, age, location, specialty, favLanguage, catchPhrase});
+   
+    this.gradClassName = gradClassName;
+    this.favInstructor = favInstructor;
+
+  }
+
+standUp(channel) {
+  return `${this.name} announces to ${channel}, @channel standy times!`;
+
+}
+
+debugsCode(studentObj, subject) {
+  return `${this.name} debugs ${studentObj.name}'s code on ${subject}`;
+}
+
+
+
 
 }
 
