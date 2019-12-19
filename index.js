@@ -199,6 +199,10 @@ PRAssignment(subject) {
   return `${this.name} has submitted a PR for ${subject}`;
 }
 
+sprintChallenge(subject) {
+  return `${this.name} has begun a sprint challenge for ${subject}`;
+}
+
 }
 
 /*
